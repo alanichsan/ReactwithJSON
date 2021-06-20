@@ -6,7 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 I'm using a JSON Server running via localhost.
 
-Make sure you have my db.json (https://drive.google.com/drive/folders/1bLlHbDxT-9sWj2JNPtaQLOr7Hkhc1kzB?usp=sharing)
+I am following steps here > https://github.com/typicode/json-server#getting-started
+
+Make sure you have my db.json > https://drive.google.com/drive/folders/1bLlHbDxT-9sWj2JNPtaQLOr7Hkhc1kzB?usp=sharing
 
 Replace JSON_API which is in the until folder, replace it according to the ip you use.
 
