@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import MyPost from "./components/MyPost";
-import { JSON_API } from "./util/constansts";
+import MyPost from "../components/main/MyPost";
+import { JSON_API } from "../util/constansts";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 

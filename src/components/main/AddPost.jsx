@@ -7,11 +7,10 @@ import {
   Button,
   FormControl,
 } from "react-bootstrap";
-
-import { JSON_API } from "../util/constansts";
+import { JSON_API } from "../../util/constansts";
 import axios from "axios";
 
-export default class Update extends Component {
+export default class AddPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,11 +21,9 @@ export default class Update extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   addData = () => {
-    const id = this.props.match.params.id;
     const { title, body, userId } = this.state;
     axios
-      .put(JSON_API + "posts/" + id, {
-        id: id,
+      .post(JSON_API + "posts", {
         title: title,
         body: body,
         userId: userId,

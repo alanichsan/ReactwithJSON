@@ -1,44 +1,47 @@
 import React, { Component } from "react";
+import ListPhotos from "./ListPhotos";
+
 import { Container, Row, Col } from "react-bootstrap";
-import ListComment from "./ListComment";
-import { JSON_API } from "../util/constansts";
+
+import { JSON_API } from "../../util/constansts";
 import axios from "axios";
 
-export default class Comment extends Component {
+export default class ViewAlbum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: [],
+      photos: [],
     };
   }
   componentDidMount() {
     const id = this.props.match.params.id;
     axios
-      .get(JSON_API + `comments?postId=${id}`)
+      .get(JSON_API + `photos?userId=${id}`)
       .then((res) => {
-        const comments = res.data;
-        this.setState({ comments });
+        const photos = res.data;
+        this.setState({ photos });
       })
       .catch((error) => {
         console.log(error);
       });
   }
   render() {
-    const { comments } = this.state;
+    const { photos } = this.state;
     return (
       <div>
-        <Container>
+        <Container className="my-3">
           <Row>
             <Col>
               <a href="/">
                 <i class="fas fa-arrow-left my-4 text-success"></i>
               </a>
-              <a href="/addpost" className="btn btn-success float-right my-4">
-                Join Comment
-              </a>
-              {comments &&
-                comments.map((comment) => (
-                  <ListComment key={comment.id} comment={comment} />
+            </Col>
+          </Row>
+          <Row>
+            <Col lg="6">
+              {photos &&
+                photos.map((photo) => (
+                  <ListPhotos key={photo.id} photo={photo} />
                 ))}
             </Col>
           </Row>

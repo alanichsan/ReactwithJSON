@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import MyPost from "./MyPost";
-import { JSON_API } from "../util/constansts";
+import ListAlbum from "./ListAlbum";
+import { JSON_API } from "../../util/constansts";
 import axios from "axios";
-export default class DetailPost extends Component {
+
+export default class DetailAlbum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mypost: [],
+      post: [],
     };
   }
   componentDidMount() {
     const id = this.props.match.params.id;
     axios
-      .get(JSON_API + `posts?userId=${id}`)
+      .get(JSON_API + `albums?userId=${id}`)
       .then((res) => {
         const post = res.data;
         this.setState({ post });
@@ -26,16 +27,18 @@ export default class DetailPost extends Component {
     const { post } = this.state;
     return (
       <div>
-        <Container className="my-4 card-post">
+        <Container>
           <Row>
             <Col>
               <a href="/">
-                <i class="fas fa-arrow-left mb-4 text-success"></i>
+                <i class="fas fa-arrow-left my-4 text-success"></i>
               </a>
+            </Col>
+          </Row>
+          <Row>
+            <Col lg="6">
               {post &&
-                post.map((mypost) => (
-                  <MyPost key={mypost.id} mypost={mypost} />
-                ))}
+                post.map((album) => <ListAlbum key={album.id} album={album} />)}
             </Col>
           </Row>
         </Container>

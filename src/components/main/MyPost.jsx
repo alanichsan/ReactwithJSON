@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { JSON_API } from "../util/constansts";
+import { JSON_API } from "../../util/constansts";
 import axios from "axios";
 
 import { useLocation } from "react-router-dom";

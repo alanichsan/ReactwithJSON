@@ -1,5 +1,5 @@
-import ListUser from "./components/ListUser";
-import { JSON_API } from "./util/constansts";
+import ListUser from "../components/main/ListUser";
+import { JSON_API } from "../util/constansts";
 import axios from "axios";
 
 import React, { Component } from "react";
