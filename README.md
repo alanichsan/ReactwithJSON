@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Attention
+
+I'm using a JSON Server running via localhost.
+
+Make sure you have my db.json (https://drive.google.com/file/d/15Ij1DjCdRFmwBA18NqB9nCVOaYjZENh9/view?usp=sharing)
+
+Replace JSON_API which is in the until folder, replace it according to the ip you use.
+
 ## Available Scripts
 
 In the project directory, you can run:
