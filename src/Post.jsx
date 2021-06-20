@@ -14,7 +14,7 @@ export default class Post extends Component {
 
   componentDidMount() {
     axios
-      .get(JSON_API + 'posts?userId=1')
+      .get(JSON_API + "posts?userId=1")
       .then((res) => {
         const posts = res.data;
         this.setState({ posts });
@@ -27,21 +27,23 @@ export default class Post extends Component {
     const { posts } = this.state;
     return (
       <div>
-        {/* Main */}
-          <div className="my-3 card-post">
-            <Container>
-              <Row>
-                <Col><a href="/addpost" className="btn btn-success">Create</a></Col>
-              </Row>
-            </Container>
-            {posts &&
-              posts.map((mypost) => (
-                <div>
-                  <MyPost key={mypost.id} mypost={mypost} />
-                </div>
-              ))}
-          </div>
-        {/* end Main */}
+        <div className="my-3 card-post">
+          <Container>
+            <Row>
+              <Col>
+                <a href="/addpost" className="btn btn-success">
+                  Create
+                </a>
+              </Col>
+            </Row>
+          </Container>
+          {posts &&
+            posts.map((mypost) => (
+              <div>
+                <MyPost key={mypost.id} mypost={mypost} />
+              </div>
+            ))}
+        </div>
       </div>
     );
   }

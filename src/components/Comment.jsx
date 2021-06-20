@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import ListComment from "./ListComment";
 import { JSON_API } from "../util/constansts";
 import axios from "axios";
@@ -37,9 +37,9 @@ export default class Comment extends Component {
                 Join Comment
               </a>
               {comments &&
-              comments.map((comment) => (
-                <ListComment key={comment.id} comment={comment} />
-              ))}
+                comments.map((comment) => (
+                  <ListComment key={comment.id} comment={comment} />
+                ))}
             </Col>
           </Row>
         </Container>

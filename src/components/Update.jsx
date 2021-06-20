@@ -25,7 +25,7 @@ export default class Update extends Component {
     const id = this.props.match.params.id;
     const { title, body, userId } = this.state;
     axios
-      .put(JSON_API + "posts/" + id , {
+      .put(JSON_API + "posts/" + id, {
         id: id,
         title: title,
         body: body,

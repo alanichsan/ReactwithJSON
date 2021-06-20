@@ -3,19 +3,17 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import { JSON_API } from "../util/constansts";
 import axios from "axios";
 
-import {
-  useLocation
-} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 const Delete = (id) => {
   axios
-  .delete(JSON_API + `posts/` + id)
-  .then((res) => {
-    console.log("Wow");
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
+    .delete(JSON_API + `posts/` + id)
+    .then((res) => {
+      console.log("Wow");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 const Mymypost = ({ mypost }) => {
   let location = useLocation();
   return (
@@ -35,16 +33,16 @@ const Mymypost = ({ mypost }) => {
                   <small className="text-muted">
                     Last updated <cite title="Source Title">3 mins ago</cite>
                   </small>
-                  { location.pathname === "/post" &&
+                  {location.pathname === "/post" && (
                     <div>
-                    <a onClick={() => Delete(mypost.id)} href="#" >
-                      <i className="fas fa-eraser float-right text-success mr-2"></i>
-                    </a>
-                    <a href={`/post/edit/${mypost.id}`}>
-                      <i className="fas fa-paperclip float-right text-success mx-2"></i>
-                    </a>
-                  </div> 
-                  }
+                      <a onClick={() => Delete(mypost.id)} href="#">
+                        <i className="fas fa-eraser float-right text-success mr-2"></i>
+                      </a>
+                      <a href={`/post/edit/${mypost.id}`}>
+                        <i className="fas fa-paperclip float-right text-success mx-2"></i>
+                      </a>
+                    </div>
+                  )}
 
                   <a href={`/post/comments/${mypost.id}`}>
                     <i className="fas fa-comment-dots float-right text-success"></i>

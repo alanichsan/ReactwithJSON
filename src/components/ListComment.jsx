@@ -7,12 +7,13 @@ const ListComment = ({ comment }) => {
       <Container className="my-4">
         <Row>
           <Col>
-          <ListGroup variant="flush">
-                <ListGroup.Item>
-                    <div className="badge badge-light">@ {comment.name} </div> {comment.body}
-                </ListGroup.Item>
-              </ListGroup>
-              <hr />
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <div className="badge badge-light">@ {comment.name} </div>{" "}
+                {comment.body}
+              </ListGroup.Item>
+            </ListGroup>
+            <hr />
           </Col>
         </Row>
       </Container>

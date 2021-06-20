@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Form, Button,FormControl } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  FormControl,
+} from "react-bootstrap";
 import { JSON_API } from "../util/constansts";
 import axios from "axios";
 
@@ -7,33 +14,34 @@ export default class AddPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        title: "",
-        body: "",
-        userId: 1
+      title: "",
+      body: "",
+      userId: 1,
     };
     this.handleChange = this.handleChange.bind(this);
   }
   addData = () => {
-    const { title, body, userId} = this.state
-    axios.post(JSON_API + 'posts', {
-      title: title,
-      body: body,
-      userId: userId
-    })
-    .then(response => {
-      this.props.history.push("/post");
-  })
-  .catch(error => {
-      console.log(JSON.stringify(error))
-  })
-  }
-  handleChange (event) {
-    var stateObject = function() {
+    const { title, body, userId } = this.state;
+    axios
+      .post(JSON_API + "posts", {
+        title: title,
+        body: body,
+        userId: userId,
+      })
+      .then((response) => {
+        this.props.history.push("/post");
+      })
+      .catch((error) => {
+        console.log(JSON.stringify(error));
+      });
+  };
+  handleChange(event) {
+    var stateObject = function () {
       let returnObj = {};
       returnObj[this.target.name] = this.target.value;
       return returnObj;
     }.bind(event)();
-    this.setState( stateObject );   
+    this.setState(stateObject);
   }
   render() {
     return (
@@ -41,7 +49,9 @@ export default class AddPost extends Component {
         <Container className="my-4">
           <Row>
             <Col lg="6">
-            <a href="/post"><i class="fas fa-arrow-left mt-4 text-success"></i></a>
+              <a href="/post">
+                <i class="fas fa-arrow-left mt-4 text-success"></i>
+              </a>
               <Form>
                 <h2 className="my-4">Apa yang sedang kamu pikirkan ?</h2>
                 <Form.Group>
@@ -56,8 +66,14 @@ export default class AddPost extends Component {
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Body</Form.Label>
-                  <FormControl as="textarea" aria-label="With textarea" placeholder="body" name="body" value={this.state.body}
-                    onChange={this.handleChange} />
+                  <FormControl
+                    as="textarea"
+                    aria-label="With textarea"
+                    placeholder="body"
+                    name="body"
+                    value={this.state.body}
+                    onChange={this.handleChange}
+                  />
                 </Form.Group>
                 <Button variant="success" onClick={this.addData}>
                   Submit

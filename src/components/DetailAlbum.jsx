@@ -1,8 +1,30 @@
 import React, { Component } from "react";
-import { Container, Row, Col, ListGroup } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import ListAlbum from "./ListAlbum";
+import { JSON_API } from "../util/constansts";
+import axios from "axios";
 
 export default class DetailAlbum extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      post: [],
+    };
+  }
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    axios
+      .get(JSON_API + `albums?userId=${id}`)
+      .then((res) => {
+        const post = res.data;
+        this.setState({ post });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   render() {
+    const { post } = this.state;
     return (
       <div>
         <Container>
@@ -15,12 +37,8 @@ export default class DetailAlbum extends Component {
           </Row>
           <Row>
             <Col lg="6">
-              <ListGroup>
-                <ListGroup.Item>
-                    Cras justo odio 
-                    <a href="/album/photo" className="float-right"><i class="far fa-eye text-success"></i></a>
-                </ListGroup.Item>
-              </ListGroup>
+              {post &&
+                post.map((album) => <ListAlbum key={album.id} album={album} />)}
             </Col>
           </Row>
         </Container>
